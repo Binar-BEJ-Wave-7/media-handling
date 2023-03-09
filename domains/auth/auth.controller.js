@@ -26,7 +26,6 @@ class AuthController {
             if (err) {
                 return res.status(500).json({message: 'error'})
             } else {
-                console.log(resp)
 
                 const user = {
                     email: req.body.email,
@@ -62,6 +61,27 @@ class AuthController {
         return res.status(200).json({
             message: 'success',
         })
+    }
+
+    getDetailProfile(req, res, next) {
+        try {
+            const avatar = 'http://localhost/uploads/1678198932005-avatar.png'
+
+            const user = {
+                name: 'Saefulloh Maslul',
+                address: 'Jakarta',
+                hobbies: ['Makan'],
+                avatar: avatar,
+                age
+            }
+
+            return res.status(200).json({
+                message: 'success',
+                data: user
+            })
+        } catch (err) {
+            next(err)
+        }
     }
 }
 
